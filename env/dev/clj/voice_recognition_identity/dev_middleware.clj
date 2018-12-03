@@ -1,4 +1,4 @@
-(ns voice-recognition.identity.dev-middleware
+(ns voice-recognition-identity.dev-middleware
   (:require [ring.middleware.reload :refer [wrap-reload]]
             [selmer.middleware :refer [wrap-error-page]]
             [prone.middleware :refer [wrap-exceptions]]))
@@ -7,4 +7,4 @@
   (-> handler
       wrap-reload
       wrap-error-page
-      (wrap-exceptions {:app-namespaces ['voice-recognition.identity]})))
+      (wrap-exceptions {:app-namespaces ['voice-recognition-identity]})))

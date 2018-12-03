@@ -1,4 +1,4 @@
-(ns voice-recognition.identity.nrepl
+(ns voice-recognition-identity.nrepl
   (:require [nrepl.server :as nrepl]
             [clojure.tools.logging :as log]))
 

@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/clojure:lein-2.7.1
+    - image: circleci/clojure:lein-2.7.1
     working_directory: ~/repo
     environment:
       LEIN_ROOT: "true"
@@ -10,40 +10,40 @@ jobs:
       JVM_OPTS: -Xmx3200m
 
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "project.clj" }}
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "project.clj" }}
 
-            - v1-dependencies-
+        - v1-dependencies-
+    - run: lein kibit
+    - run: lein deps
 
-      - run: lein deps
-
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "project.clj" }}
-      - run: lein test
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: v1-dependencies-{{ checksum "project.clj" }}
+    - run: lein test
   deploy:
     docker:
-      - image: circleci/clojure:lein-2.7.1
+    - image: circleci/clojure:lein-2.7.1
     environment:
       HEROKU_API_KEY: 23a19d69-b736-43e5-ae15-0b046ca72ace
       HEROKU_APP_NAME: voice-recognition-identity
     steps:
-      - checkout
-      - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+    - checkout
+    - run:
+        name: Deploy Master to Heroku
+        command: |
+          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+    - build
+    - deploy:
+        requires:
+        - build
+        filters:
+          branches:
+            only: master

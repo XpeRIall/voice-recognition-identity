@@ -1,5 +1,6 @@
-(ns voice-recognition.identity.routes.home
-  (:require [voice-recognition.identity.layout :as layout]
+(ns voice-recognition-identity.routes.home
+  (:require [voice-recognition-identity.layout :as layout]
+            [voice-recognition-identity.db.core :as db]
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
@@ -12,6 +13,6 @@
   (layout/render "about.html"))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
-  (GET "/about" [] (about-page)))
+           (GET "/" [] (home-page))
+           (GET "/about" [] (about-page)))
 

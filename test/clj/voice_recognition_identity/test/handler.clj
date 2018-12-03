@@ -1,8 +1,8 @@
-(ns voice-recognition.identity.test.handler
+(ns voice-recognition-identity.test.handler
   (:require [clojure.test :refer :all]
             [ring.mock.request :refer :all]
-            [voice-recognition.identity.handler :refer :all]
-            [voice-recognition.identity.middleware.formats :as formats]
+            [voice-recognition-identity.handler :refer :all]
+            [voice-recognition-identity.middleware.formats :as formats]
             [muuntaja.core :as m]
             [mount.core :as mount]))
 
@@ -12,8 +12,8 @@
 (use-fixtures
   :once
   (fn [f]
-    (mount/start #'voice-recognition.identity.config/env
-                 #'voice-recognition.identity.handler/app)
+    (mount/start #'voice-recognition-identity.config/env
+                 #'voice-recognition-identity.handler/app)
     (f)))
 
 (deftest test-app

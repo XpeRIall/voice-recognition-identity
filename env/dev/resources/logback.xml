@@ -10,9 +10,9 @@
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>log/voice-recognition.identity.log</file>
+        <file>log/voice-recognition-identity.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>log/voice-recognition.identity.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>log/voice-recognition-identity.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -26,6 +26,7 @@
     </appender>
     <logger name="org.apache.http" level="warn" />
     <logger name="org.xnio.nio" level="warn" />
+    <logger name="com.zaxxer.hikari" level="warn" />
     <logger name="io.undertow.session" level="warn" />
     <logger name="io.undertow.request" level="warn" />
     <root level="DEBUG">

@@ -1,4 +1,4 @@
-# voice-recognition.identity
+# voice-recognition-identity
 
 generated using Luminus version "3.10.21"
 
