@@ -1,11 +1,10 @@
 (ns voice-recognition-identity.helpers.crypto
   (:require [buddy.sign.jwt :as jwt]
-            [buddy.core.hash :as hash]
             [buddy.core.codecs :refer :all]))
 (import 'java.security.MessageDigest
         'java.math.BigInteger)
 
-(def secret "86bae26023208e57a5880d5ad644143c567fc57baaf5a942")
+(def secret "0SgucHt!`-B_^aUG-:}5T3JE1{O-6-TQ?-_I7KPW?guZ=Ks`@miVAn3djDx~s=`")
 
 (defn generate-signature [email]
   (jwt/sign {:user email} secret))
@@ -14,13 +13,13 @@
   (jwt/unsign token secret))
 
 (defn genMD5Hash [^String s]
-  (->> s
-       .getBytes
-       (.digest (MessageDigest/getInstance "MD5"))
-       (BigInteger. 1)
-       (format "%032x")))
+  (->>
+    s
+    .getBytes
+    (.digest (MessageDigest/getInstance "MD5"))
+    (BigInteger. 1)
+    (format "%032x")))
 
-(defn verify-pass [hash pass]
-  (cond
-    (= (genMD5Hash pass) hash) hash
-    :else nil))
+(defn verify-pass [pass hash]
+  (let [pass_hash (genMD5Hash pass)]
+    (= pass_hash hash)))

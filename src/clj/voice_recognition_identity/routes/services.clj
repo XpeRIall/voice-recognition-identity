@@ -25,10 +25,6 @@
   [_ binding acc]
   (update-in acc [:letks] into [binding `(:identity ~'+compojure-api-request+)]))
 
-(defn admin? [req]
-  (and (authenticated? req)
-       (#{:admin} (:role (:identity req)))))
-
 (defapi service-routes
   {:swagger {:ui   "/swagger"
              :spec "/swagger.json"
@@ -43,10 +39,8 @@
     (let [token
           (core/signin email password)]
       (cond
-        (:some token) (ok {:token token})
-        :else (bad-request "Wrong Credentials"))
-      )
-    )
+        (some? token) (ok {:token token})
+        :else (bad-request "Wrong Credentials"))))
 
   (POST "/signup" req
     :return {:token String}
@@ -55,18 +49,4 @@
     (let [token (core/signup first_name last_name email password)]
       (cond
         (some? token) (ok {:token token})
-        :else (bad-request "User is already registered"))
-      )
-    )
-  (context "/api" []
-    :middleware [wrap-anti-forgery]
-    ;:auth-rules {:or [authenticated? admin?]}
-    :tags ["private"]
-    (GET "/user" []
-      :current-user user
-      (ok user))
-    (GET "/logout" []
-      :return String
-      :summary "remove user session"
-      (assoc (ok "ok") :session nil))
-    ))
+        :else (bad-request "User is already registered")))))
