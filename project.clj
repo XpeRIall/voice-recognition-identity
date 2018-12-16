@@ -36,8 +36,7 @@
                  [selmer "1.12.5"]
                  [lein-watch "0.0.2"]
                  [korma "0.4.3"]
-                 [org.postgresql/postgresql "42.1.4"]
-                 [org.clojure/core.match "0.3.0-alpha5"]]
+                 [org.postgresql/postgresql "42.1.4"]]
   :min-lein-version "2.0.0"
 
   :source-paths ["src/clj"]
