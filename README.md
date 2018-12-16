@@ -1,9 +1,5 @@
 # voice-recognition-identity
 
-generated using Luminus version "3.10.21"
-
-FIXME
-
 ## Prerequisites
 
 You will need [Leiningen][1] 2.0 or above installed.
