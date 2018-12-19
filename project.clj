@@ -4,6 +4,7 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[buddy "2.0.0"]
+                 [org.flatland/ordered "1.5.7"]
                  [clojure.java-time "0.3.2"]
                  [com.fasterxml.jackson.core/jackson-core "2.9.7"]
                  [com.fasterxml.jackson.datatype/jackson-datatype-jdk8 "2.9.7"]
@@ -32,6 +33,7 @@
                  [org.webjars/webjars-locator "0.34"]
                  [ring-webjars "0.2.0"]
                  [ring/ring-core "1.7.1"]
+                 [ring-cors "0.1.7"]
                  [ring/ring-defaults "0.3.2"]
                  [selmer "1.12.5"]
                  [lein-watch "0.0.2"]
